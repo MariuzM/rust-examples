@@ -1,9 +1,16 @@
-fn main() {
+// struct Test {
+//     a: i8,
+//     b: f32,
+// }
+// let t1 = Test { a: 1, b: 2.2 };
+// println!("t1: {:#?}", t1);
+
+pub fn cheat_sheat() {
     println!("---------------------------------------------------------------------------");
     println!("|||||||||| Tuple");
     println!("---------------------------------------------------------------------------");
 
-    let tuple: (&str, bool, i32) = ("This is string", false, 100_00);
+    let tuple: (&str, bool, i32) = ("This is string", false, 10_000);
     println!("tuple 0: {}", tuple.0);
     println!("tuple 1: {}", tuple.1);
     println!("tuple 2: {}", tuple.2);
@@ -22,6 +29,7 @@ fn main() {
             break;
         }
     }
+
     println!("----------------------------");
 
     let mut counter = 5;
@@ -29,6 +37,7 @@ fn main() {
         println!("While: {}", counter);
         counter -= 1;
     }
+
     println!("----------------------------");
 
     let arr = [1, 2, 4, 5];
@@ -61,12 +70,12 @@ fn main() {
     println!("this_is_statement: {}", this_is_statement);
 
     println!("---------------------------------------------------------------------------");
-    println!("|||||||||| Statement thta has Expresion");
+    println!("|||||||||| Statement with Expresion");
     println!("---------------------------------------------------------------------------");
 
     let return_number = {
         let x: i32 = 3;
-        x + 1 // Don't add ; because then it does not return value, Expresion
+        x + 1 // Don't add ';' because then it does not return value, Expresion
     };
     println!("return_number: {}", return_number);
 
@@ -81,7 +90,7 @@ fn main() {
             return 4; // Expresion
         };
         // * 'val' or 'return val;'
-        return val; // Expresion
+        val // Expresion
     }
 
     println!("---------------------------------------------------------------------------");
@@ -98,4 +107,53 @@ fn main() {
     println!("owner_3: {}", owner_3); // * this works because i cloned from the owner that has the value
 
     println!("---------------------------------------------------------------------------");
+    println!("|||||||||| Debug print");
+    println!("---------------------------------------------------------------------------");
+
+    let val: Vec<i32> = vec![1, 2, 3];
+    println!("debug print: {:?}", val); // * will use this 'std::fmt::Debug' instead of 'std::fmt::Display'
+
+    println!("---------------------------------------------------------------------------");
+    println!("|||||||||| Raw string literals");
+    println!("---------------------------------------------------------------------------");
+
+    let json_string: &str = r#"{
+        "name": "John",
+        "number": ["one", "two"]
+    }"#;
+    println!("json_string: {}", json_string);
+    println!("json_string :? : {:?}", json_string);
+
+    println!("---------------------------------------------------------------------------");
+    println!("|||||||||| Reference");
+    println!("---------------------------------------------------------------------------");
+
+    // Stored in Stack
+    let mut t1 = "Test 1";
+    let t2 = t1;
+    println!("t2: {}", t2);
+    println!("t1: {}", t1);
+    t1 = "Test 1 Changed";
+    println!("t1: {}", t1);
+    println!("t2: {}", t2);
+
+    // Stored in Heap
+    let mut t3 = vec!["Test 2"];
+    let t4 = t3.clone();
+    println!("t3: {:?}", t3);
+    println!("t4: {:?}", t4);
+    t3 = vec!["Test 2 Changed"];
+    println!("t3: {:?}", t3);
+    println!("t4: {:?}", t4);
+
+    println!("---------------------------------------------------------------------------");
+
+    let example_str: &str = "String: &str";
+    let example_string: String = String::from("String: String");
+    let example_from_str: String = example_str.to_string();
+    let example_from_str2: String = "Hard coded string".to_string();
+    println!("example_str: {:?}", example_str);
+    println!("example_string: {:?}", example_string);
+    println!("example_from_str: {:?}", example_from_str);
+    println!("example_from_str2: {:?}", example_from_str2);
 }

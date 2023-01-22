@@ -1,8 +1,12 @@
+use crate::random_data;
+// mod random_data;
+
 #[derive(Debug)] // allow to print 'Data' object
 struct Data {
     bool: bool,
     float: f32,
     int: i32,
+    more_data: random_data::RandomData,
 }
 
 // impl std::fmt::Display for Data {
@@ -16,15 +20,24 @@ struct Data {
 // }
 
 pub fn structure() {
-    let mut new_structure = Data {
+    let mut strc_1 = Data {
         bool: false,
         float: 1.2,
         int: 2,
+        more_data: random_data::RandomData::new(),
     };
 
-    new_structure.bool = true;
-    new_structure.float = 2.2;
-    new_structure.int = 5;
+    print!("Test => {:?}", random_data::RandomData::new().val1);
 
-    println!("{:?}", new_structure);
+    strc_1.bool = true;
+    strc_1.float = 2.2;
+    strc_1.int = 5;
+    strc_1.more_data.val1 = 1.4;
+    strc_1.more_data.val2 = 4;
+
+    // println!("strc_1: ===> {:?}", strc_1);
+    // println!("strc_1.more_data.val2: ===> {:?}", strc_1.more_data.val2);
+
+    // let strc_2 = Data { int: 7, ..strc_1 };
+    // println!("strc_2.int: ===> {:?}", strc_2.int);
 }

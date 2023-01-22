@@ -1,7 +1,8 @@
-pub mod cheat_sheet;
-pub mod structure;
-pub mod structure_calc;
-pub mod thread;
+// mod cheat_sheet;
+mod random_data;
+mod structure;
+// mod structure_calc;
+// mod thread;
 
 // use structure::*;
 // use thread::*;
